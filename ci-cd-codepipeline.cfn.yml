@@ -26,7 +26,7 @@ Parameters:
   GitBranch:
     Type: String
     Default: master
-    Description: # GitHub git repository branch - change triggers a new build
+    Description: GitHub git repository branch - change triggers a new build
     MinLength: 1
     MaxLength: 100
     ConstraintDescription: You must enter a GitHub repository branch name
@@ -34,7 +34,7 @@ Parameters:
   GitHubToken:
     Type: String
     NoEcho: true
-    Description: #GitHub API token - see https://github.com/blog/1509-personal-api-tokens
+    Description: GitHub API token - see https://github.com/blog/1509-personal-api-tokens
     MinLength: 3
     MaxLength: 100
     ConstraintDescription: You must enter a GitHub personal access token

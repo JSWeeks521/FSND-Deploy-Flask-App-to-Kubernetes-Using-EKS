@@ -78,7 +78,7 @@ Parameters:
   GitSourceRepo:
     ConstraintDescription: "You must enter a GitHub repository name"
     Default: FSND-Deploy-Flask-App-to-Kubernetes-Using-EKS
-    Description: "https://github.com/JSWeeks521/FSND-Deploy-Flask-App-to-Kubernetes-Using-EKS"
+    Description: GitHub source repository - must contain a Dockerfile and buildspec.yml in the base
     MaxLength: 100
     MinLength: 1
     Type: String
@@ -89,6 +89,7 @@ Parameters:
     MaxLength: 100
     MinLength: 3
     Type: String
+
 Resources:
   CodeBuildProject:
     DependsOn: KubectlAssumeRoleCustomResource

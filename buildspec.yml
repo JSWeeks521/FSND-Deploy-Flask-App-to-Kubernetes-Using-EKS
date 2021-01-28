@@ -26,10 +26,6 @@ phases:
         - sed -i 's@CONTAINER_IMAGE@'"$REPOSITORY_URI:$TAG"'@' simple_jwt_api.yml
         - $(aws ecr get-login --no-include-email)
         - export KUBECONFIG=$HOME/.kube/config
-        - pip3 install --upgrade pip
-        - pip3 install -r requirements.txt
-        - python3 -m pytest test_main.py
-
   build:
     commands:
       - docker build --tag $REPOSITORY_URI:$TAG .
@@ -39,13 +35,10 @@ phases:
       - docker push $REPOSITORY_URI:$TAG
       - aws eks update-kubeconfig --name $EKS_CLUSTER_NAME --role-arn $EKS_KUBECTL_ROLE_ARN
       - kubectl apply -f simple_jwt_api.yml
+      - kubectl set env deployment/simple-jwt-api JWT_SECRET=$JWT_SECRET
       - printf '[{"name":"simple_jwt_api","imageUri":"%s"}]' $REPOSITORY_URI:$TAG > build.json
-      - echo $JWT_SECRET
-      - pwd
-      -ls
 artifacts:
-  files: build.json
-
+    files: build.json
 env:
-   parameter-store:
-     JWT_SECRET: JWT_SECRET
+    parameter-store:
+        JWT_SECRET: JWT_SECRET

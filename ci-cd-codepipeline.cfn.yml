@@ -84,7 +84,7 @@ Parameters:
     Type: String
   KubectlRoleName:
     ConstraintDescription: "You must enter a kubectl IAM role"
-    Default: arn:aws:iam::014667131196:role/UdacityFlaskDeployCBKubectlRole
+    Default: UdacityFlaskDeployCBKubectlRole
     Description: "IAM role used by kubectl to interact with EKS cluster"
     MaxLength: 100
     MinLength: 3

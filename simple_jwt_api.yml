@@ -23,7 +23,7 @@ spec:
       maxSurge: 2
   selector:
     matchLabels:
-      app: simple-jwt-api
+      - app: simple-jwt-api
   template:
     metadata:
       labels:

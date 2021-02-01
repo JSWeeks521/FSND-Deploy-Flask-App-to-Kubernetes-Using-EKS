@@ -27,4 +27,3 @@ htmlcov/
 # Direnv
 .envrc
 .direnv
-.env_file

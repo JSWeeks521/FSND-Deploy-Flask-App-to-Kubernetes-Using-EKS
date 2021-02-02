@@ -23,7 +23,7 @@ spec:
       maxSurge: 2
   selector:
     matchLabels:
-      - app: simple-jwt-api
+      app: simple-jwt-api
   template:
     metadata:
       labels:
@@ -36,8 +36,5 @@ spec:
             privileged: false
             readOnlyRootFilesystem: false
             allowPrivilegeEscalation: false
-        env:
-            - name: JWT_SECRET
-             value: JWT_SECRET_VALUE
-        ports:
+          ports:
             - containerPort: 8080
